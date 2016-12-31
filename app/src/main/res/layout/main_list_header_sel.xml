@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.00">
 
-            <ImageView android:id="@+id/presentIcon"
+            <ImageView android:id="@+id/title_icon_sel"
                 android:layout_width="@dimen/main_header_item_menu_icon_width"
                 android:layout_height="@dimen/main_header_item_menu_icon_height"
                 android:layout_marginLeft="10.0dip"

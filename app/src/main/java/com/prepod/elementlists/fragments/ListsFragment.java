@@ -3,12 +3,21 @@ package com.prepod.elementlists.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.prepod.elementlists.R;
+import com.prepod.elementlists.adapters.MainListAdapter;
+import com.prepod.elementlists.containers.MainCard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +38,10 @@ public class ListsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private RecyclerView mainRecycler;
+    private MainListAdapter adapter;
+    private List<MainCard> itemList = new ArrayList<>();
 
     public ListsFragment() {
         // Required empty public constructor
@@ -66,6 +79,27 @@ public class ListsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lists, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mainRecycler = (RecyclerView) view.findViewById(R.id.main_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mainRecycler.setHasFixedSize(true);
+        mainRecycler.setLayoutManager(layoutManager);
+        listInit();
+        adapter = new MainListAdapter(getActivity(), itemList);
+        mainRecycler.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void listInit(){
+        MainCard card = new MainCard("First");
+        itemList.add(card);
+        MainCard cardSecond = new MainCard("Second");
+        itemList.add(cardSecond);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

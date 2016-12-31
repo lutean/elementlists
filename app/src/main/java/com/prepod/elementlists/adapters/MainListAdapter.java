@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.prepod.elementlists.R;
 import com.prepod.elementlists.containers.MainCard;
@@ -29,18 +31,27 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        holder.titleIcon.setImageResource(itemList.get(position).getImgRes());
+        holder.titleIconSel.setImageResource(itemList.get(position).getImgResSel());
+        holder.title.setText(itemList.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return itemList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
+        ImageView titleIcon;
+        ImageView titleIconSel;
+        TextView title;
+
         public ViewHolder(View itemView) {
             super(itemView);
+            titleIcon = (ImageView) itemView.findViewById(R.id.title_icon);
+            titleIconSel = (ImageView) itemView.findViewById(R.id.title_icon_sel);
+            title = (TextView) itemView.findViewById(R.id.header_text);
         }
     }
 }
