@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.prepod.elementlists.R;
@@ -42,7 +42,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
         holder.cardListItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.OnItemClicked(holder.getAdapterPosition());
+                listener.onItemClick(holder.getAdapterPosition());
             }
         });
     }
@@ -57,14 +57,14 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
         ImageView itemIcon;
         TextView itemTitle;
         TextView itemStatus;
-        LinearLayout cardListItemLayout;
+        RelativeLayout cardListItemLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemIcon = (ImageView) itemView.findViewById(R.id.card_list_icon);
             itemTitle = (TextView) itemView.findViewById(R.id.card_list_text);
             itemStatus = (TextView) itemView.findViewById(R.id.card_list_status);
-            cardListItemLayout = (LinearLayout) itemView.findViewById(R.id.card_list_layout);
+            cardListItemLayout = (RelativeLayout) itemView.findViewById(R.id.card_list_layout);
         }
     }
 }
