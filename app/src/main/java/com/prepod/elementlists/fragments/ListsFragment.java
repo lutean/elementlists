@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 
 import com.prepod.elementlists.R;
 import com.prepod.elementlists.adapters.MainListAdapter;
+import com.prepod.elementlists.containers.CardListItem;
 import com.prepod.elementlists.containers.MainCard;
+import com.prepod.elementlists.interfaces.OnCardListItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,7 @@ public class ListsFragment extends Fragment {
     private RecyclerView mainRecycler;
     private MainListAdapter adapter;
     private List<MainCard> itemList = new ArrayList<>();
+    private List<List<CardListItem>> cardList = new ArrayList<>();
 
     public ListsFragment() {
         // Required empty public constructor
@@ -89,17 +92,31 @@ public class ListsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mainRecycler.setHasFixedSize(true);
         mainRecycler.setLayoutManager(layoutManager);
-        listInit();
-        adapter = new MainListAdapter(getActivity(), itemList);
+        initDummyData();
+        adapter = new MainListAdapter(getActivity(), itemList, cardList, new OnCardListItemClickListener() {
+            @Override
+            public void OnItemClicked(int position) {
+
+            }
+        });
         mainRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    private void listInit(){
+    private void initDummyData(){
         MainCard card = new MainCard("First");
         itemList.add(card);
         MainCard cardSecond = new MainCard("Second");
         itemList.add(cardSecond);
+
+        List<CardListItem> tempList = new ArrayList<>();
+        tempList.add(new CardListItem(R.mipmap.facebook, "Line 1", "Avaliable"));
+        cardList.add(tempList);
+
+        List<CardListItem> tempListAn = new ArrayList<>();
+        tempListAn.add(new CardListItem(R.mipmap.google, "Line 1", "Avaliable"));
+        tempListAn.add(new CardListItem(R.mipmap.youtube, "Line 2", "Avaliable"));
+        cardList.add(tempListAn);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
