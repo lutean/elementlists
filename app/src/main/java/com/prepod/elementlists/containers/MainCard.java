@@ -2,11 +2,15 @@ package com.prepod.elementlists.containers;
 
 import com.prepod.elementlists.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainCard {
 
     private int imgRes;
     private int imgResSel;
     private String title;
+    private List<CardListItem> cardListItem = new ArrayList<>();
 
     public MainCard(String title){
         this.imgRes = R.mipmap.win;
@@ -36,6 +40,14 @@ public class MainCard {
 
     public void setImgResSel(int imgResSel) {
         this.imgResSel = imgResSel;
+    }
+
+    public List<CardListItem> getCardListItem() {
+        return cardListItem;
+    }
+
+    public void setCardListItem(List<CardListItem> cardListItem) {
+        this.cardListItem = cardListItem;
     }
 }
 

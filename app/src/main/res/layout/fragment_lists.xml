@@ -6,7 +6,7 @@
     tools:context="com.prepod.elementlists.fragments.ListsFragment">
 
    <android.support.v7.widget.RecyclerView
-       android:layout_marginTop="@dimen/activity_vertical_margin"
+
        android:id="@+id/main_recycler"
        android:layout_width="match_parent"
        android:layout_height="match_parent">

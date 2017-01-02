@@ -20,15 +20,13 @@ import java.util.List;
 public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder> {
 
     private List<MainCard> itemList;
-    private List<List<CardListItem>> cardListItems;
     private Context context;
     private OnCardListItemClickListener listener;
     private int selectedItem = -1;
 
-    public MainListAdapter(Context context, List<MainCard> itemList, List<List<CardListItem>> cardListItems, OnCardListItemClickListener listener){
+    public MainListAdapter(Context context, List<MainCard> itemList, OnCardListItemClickListener listener){
         this.context = context;
         this.itemList = itemList;
-        this.cardListItems = cardListItems;
         this.listener = listener;
     }
 
@@ -54,7 +52,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         holder.cardRecycelr.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         holder.cardRecycelr.setLayoutManager(layoutManager);
-        final CardListAdapter adapter = new CardListAdapter(context, cardListItems.get(position), listener);
+        final CardListAdapter adapter = new CardListAdapter(context, itemList.get(position).getCardListItem(), listener);
         holder.cardRecycelr.setAdapter(adapter);
 
 //        holder.mainCard.setOnClickListener(new View.OnClickListener() {

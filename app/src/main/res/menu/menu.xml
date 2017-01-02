@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.prepod.test.MainActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@mipmap/search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search"/>
+    <item
+        android:title=""
+        android:id="@+id/action_bell"
+        android:icon="@mipmap/bell"
+        app:showAsAction="ifRoom" />
+    <item
+        android:title="@string/line1"
+        android:id="@+id/action_line1"
+        android:icon="@mipmap/bell"
+        app:showAsAction="never" />
+    <item
+        android:title="@string/line2"
+        android:id="@+id/action_line2"
+        android:icon="@mipmap/bell"
+        app:showAsAction="never" />
+    <item
+        android:title="@string/line3"
+        android:id="@+id/action_line3"
+        android:icon="@mipmap/bell"
+        app:showAsAction="never" />
+    <item
+        android:title="@string/line4"
+        android:id="@+id/action_line4"
+        android:icon="@mipmap/bell"
+        app:showAsAction="never" />
+
+</menu>

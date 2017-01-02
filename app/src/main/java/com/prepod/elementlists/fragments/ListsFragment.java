@@ -14,17 +14,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.prepod.elementlists.R;
 import com.prepod.elementlists.adapters.MainListAdapter;
 import com.prepod.elementlists.containers.CardListItem;
 import com.prepod.elementlists.containers.MainCard;
 import com.prepod.elementlists.interfaces.OnCardListItemClickListener;
+import com.prepod.elementlists.interfaces.OnQueryTextChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListsFragment extends Fragment implements OnCardListItemClickListener{
+public class ListsFragment extends Fragment implements OnCardListItemClickListener, OnQueryTextChangeListener{
 
     private RecyclerView mainRecycler;
     private MainListAdapter adapter;
@@ -32,6 +34,7 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
     private List<List<CardListItem>> cardList = new ArrayList<>();
     private OnCardListItemClickListener cardListener;
     private CoordinatorLayout coordinatorLayout;
+    private List<MainCard> tempSearchCollection = new ArrayList<>();
 
     public ListsFragment() {
     }
@@ -59,25 +62,27 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
         mainRecycler.setHasFixedSize(true);
         mainRecycler.setLayoutManager(layoutManager);
         initDummyData();
-        adapter = new MainListAdapter(getActivity(), itemList, cardList, this);
+        adapter = new MainListAdapter(getActivity(), itemList, this);
         mainRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void initDummyData(){
         MainCard card = new MainCard("First");
-        itemList.add(card);
-        MainCard cardSecond = new MainCard("Second");
-        itemList.add(cardSecond);
-
         List<CardListItem> tempList = new ArrayList<>();
         tempList.add(new CardListItem(R.mipmap.facebook, "Line 1", "Avaliable"));
-        cardList.add(tempList);
+        card.setCardListItem(tempList);
+        itemList.add(card);
+
+
+        MainCard cardSecond = new MainCard("Second");
 
         List<CardListItem> tempListAn = new ArrayList<>();
         tempListAn.add(new CardListItem(R.mipmap.google, "Line 1", "Avaliable"));
         tempListAn.add(new CardListItem(R.mipmap.youtube, "Line 2", "Avaliable"));
-        cardList.add(tempListAn);
+        cardSecond.setCardListItem(tempListAn);
+        itemList.add(cardSecond);
+
     }
 
     private void showMessage(String msg){
@@ -114,5 +119,28 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
     @Override
     public void onLockClick() {
         showMessage("Something locked");
+    }
+
+    @Override
+    public void onQueryTextChange(String s) {
+        int textLength = s.length();
+        tempSearchCollection.clear();
+        for (int i = 0; i < itemList.size(); i++) {
+
+            if (textLength <= itemList.get(i).getTitle().length()) {
+                if (itemList.get(i).getTitle().toLowerCase().contains(s.toLowerCase())) {
+                    tempSearchCollection.add(itemList.get(i));
+
+                }
+            }
+
+        }
+        if (textLength == 0) {
+            tempSearchCollection.clear();
+            adapter = new MainListAdapter(getActivity(), itemList, this);
+        } else
+            adapter = new MainListAdapter(getActivity(), tempSearchCollection, this);
+
+        mainRecycler.setAdapter(adapter);
     }
 }

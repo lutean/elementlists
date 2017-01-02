@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">ElementLists</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="line1">Line 1</string>
+    <string name="line2">Line 2</string>
+    <string name="line3">Line 3</string>
+    <string name="line4">Line 4</string>
 </resources>
