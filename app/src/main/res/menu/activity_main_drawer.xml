@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_line1"
+            android:title="@string/line1" />
+        <item
+            android:id="@+id/drawer_line2"
+            android:title="@string/line2" />
+        <item
+            android:id="@+id/drawer_line3"
+            android:title="@string/line3" />
+
+    </group>
+
+    <item android:title="New">
+        <menu>
+            <item
+                android:id="@+id/drawer_line4"
+                android:title="@string/line4" />
+        </menu>
+    </item>
+
+</menu>

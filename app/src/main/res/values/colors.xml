@@ -8,4 +8,6 @@
     <color name="colorWhite">#ffffff</color>
     <color name="main_list_divider_color">#708D9299</color>
     <color name="main_header_selected">#118afb</color>
+
+    <color name="side_nav_bar">#616161</color>
 </resources>
