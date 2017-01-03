@@ -1,8 +1,11 @@
 package com.prepod.elementlists.interfaces;
 
+import android.view.View;
+
 public interface OnCardListItemClickListener {
     void onItemClick(int position);
+    void onHeaderMenuClick(View v, int position);
     void onHeaderContactClick(int position);
-    void onPencilClick();
-    void onLockClick();
+    void onHeaderPencilClick();
+    void onHeaderLockClick();
 }

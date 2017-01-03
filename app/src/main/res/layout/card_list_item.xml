@@ -12,23 +12,22 @@
 
 
         <ImageView android:id="@+id/card_list_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
+            android:layout_width="@dimen/card_list_icon_size"
+            android:layout_height="@dimen/card_list_icon_size"
+            android:layout_marginLeft="@dimen/card_list_icon_margin_left"
 
             android:src="@mipmap/facebook"
             android:scaleType="fitCenter"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp" />
+            android:layout_alignParentStart="true" />
 
         <ImageView android:id="@+id/card_item_arrow"
 
             android:layout_width="@dimen/main_header_item_menu_icon_width"
             android:layout_height="@dimen/main_header_item_menu_icon_height"
             android:src="@mipmap/arrow"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginRight="@dimen/card_item_arrow_margin_right"
             android:scaleType="fitCenter"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -36,14 +35,14 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/card_item_text_container_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/card_list_icon"
-            android:layout_toEndOf="@+id/card_list_icon"
-            android:layout_marginStart="10dp">
-            <TextView android:textSize="15.0dip"
+            android:layout_toEndOf="@+id/card_list_icon">
+
+            <TextView android:textSize="@dimen/card_item_text_size"
                 android:textColor="@color/colorBlack"
                 android:id="@+id/card_list_text"
                 android:layout_width="wrap_content"
@@ -51,7 +50,7 @@
                 android:text="TextView"
                 android:maxLines="1"
                 />
-            <TextView android:textSize="15.0dip"
+            <TextView android:textSize="@dimen/card_item_text_size"
                 android:textColor="@color/colorBlack"
                 android:id="@+id/card_list_status"
                 android:layout_width="wrap_content"

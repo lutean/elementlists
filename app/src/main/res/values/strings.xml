@@ -6,4 +6,9 @@
     <string name="line2">Line 2</string>
     <string name="line3">Line 3</string>
     <string name="line4">Line 4</string>
+
+    <string name="group">First group</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

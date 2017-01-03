@@ -5,10 +5,11 @@
     android:id="@+id/main_card"
     android:orientation="horizontal">
 <android.support.v7.widget.CardView
-    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginTop="@dimen/activity_vertical_card_margin"
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginBottom="1dp"
-    android:layout_width="300dp"
+    android:layout_marginRight="@dimen/card_view_one_pixel_margin"
+    android:layout_marginBottom="@dimen/card_view_one_pixel_margin"
+    android:layout_width="@dimen/card_view_width"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -27,7 +28,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="55.0dip">
+        android:layout_height="@dimen/main_list_header_height">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,8 +38,8 @@
             <ImageView android:id="@+id/title_icon"
                 android:layout_width="@dimen/main_header_item_menu_icon_width"
                 android:layout_height="@dimen/main_header_item_menu_icon_height"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginRight="10.0dip"
+                android:layout_marginLeft="@dimen/main_list_header_icon_horizontal_margin"
+                android:layout_marginRight="@dimen/main_list_header_icon_horizontal_margin"
                 android:src="@mipmap/win"
                 android:scaleType="fitCenter" />
 
@@ -48,7 +49,7 @@
             android:layout_weight="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <TextView android:textSize="17.0dip"
+            <TextView android:textSize="@dimen/main_list_header_text_size"
                 android:textColor="@color/colorBlack"
                 android:id="@+id/header_text"
                 android:layout_width="wrap_content"
@@ -58,12 +59,11 @@
                 />
 
         </LinearLayout>
-        <ImageView android:id="@+id/drawer_arrow"
-            android:paddingLeft="2.0dip"
+        <ImageView android:id="@+id/menu_dots"
             android:layout_width="@dimen/main_header_item_menu_icon_width"
             android:layout_height="@dimen/main_header_item_menu_icon_height"
-            android:layout_marginLeft="15.0dip"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginLeft="@dimen/main_list_header_icon_horizontal_margin"
+            android:layout_marginRight="@dimen/main_list_header_icon_horizontal_margin"
             android:src="@mipmap/menu_dots"
             android:scaleType="fitCenter" />
 
@@ -74,19 +74,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First group"
-            android:textSize="10sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10.0dip"
+            android:text="@string/group"
+            android:textSize="@dimen/main_list_card_text_size"
+            android:layout_marginTop="@dimen/main_list_card_text_margin"
+            android:layout_marginLeft="@dimen/main_list_card_text_margin"
             />
 
-
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/main_list_divider_margin"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/main_divider">
+
     </LinearLayout>
 
         <android.support.v7.widget.RecyclerView

@@ -44,15 +44,11 @@ public class MainActivity extends AppCompatActivity{
                 .beginTransaction()
                 .replace(R.id.frame, listFragment)
                 .commit();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-
         final MenuItem myActionMenuItem = menu.findItem( R.id.action_search);
 
         searchView = (SearchView) myActionMenuItem.getActionView();
@@ -76,16 +72,11 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
+    public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-
         if (id == R.id.action_search) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
-
 }

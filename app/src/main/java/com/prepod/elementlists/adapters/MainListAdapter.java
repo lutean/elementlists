@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.prepod.elementlists.R;
-import com.prepod.elementlists.containers.CardListItem;
 import com.prepod.elementlists.containers.MainCard;
 import com.prepod.elementlists.interfaces.OnCardListItemClickListener;
 
@@ -54,15 +53,6 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         holder.cardRecycelr.setLayoutManager(layoutManager);
         final CardListAdapter adapter = new CardListAdapter(context, itemList.get(position).getCardListItem(), listener);
         holder.cardRecycelr.setAdapter(adapter);
-
-//        holder.mainCard.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                selectedItem = holder.getAdapterPosition();
-//                notifyDataSetChanged();
-//            }
-//        });
-
     }
 
     @Override
@@ -83,6 +73,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         ImageView headerContact;
         ImageView headerPencil;
         ImageView headerLock;
+        ImageView menuDots;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -91,6 +82,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
             title = (TextView) itemView.findViewById(R.id.header_text);
             titleSel = (TextView) itemView.findViewById(R.id.header_text_sel);
             cardRecycelr = (RecyclerView) itemView.findViewById(R.id.card_recycler);
+            menuDots = (ImageView) itemView.findViewById(R.id.menu_dots);
             mainCard = (LinearLayout) itemView.findViewById(R.id.main_card);
             mainHeader = (LinearLayout) itemView.findViewById(R.id.main_header);
             mainHeaderSel = (LinearLayout) itemView.findViewById(R.id.main_header_sel);
@@ -104,6 +96,12 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
                     notifyDataSetChanged();
                 }
             });
+            menuDots.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onHeaderMenuClick(view, getAdapterPosition());
+                }
+            });
             headerContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -113,13 +111,13 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
             headerPencil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onPencilClick();
+                    listener.onHeaderPencilClick();
                 }
             });
             headerLock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onLockClick();
+                    listener.onHeaderLockClick();
                 }
             });
         }

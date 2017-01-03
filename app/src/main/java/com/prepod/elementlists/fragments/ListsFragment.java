@@ -9,9 +9,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -89,6 +91,18 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
         Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show();
     }
 
+    private void showPopUpMenu(View view){
+        PopupMenu menu = new PopupMenu(getActivity(), view);
+        menu.inflate(R.menu.popupmenu);
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });
+        menu.show();
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -107,17 +121,22 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
     }
 
     @Override
+    public void onHeaderMenuClick(View v, int position) {
+        showPopUpMenu(v);
+    }
+
+    @Override
     public void onHeaderContactClick(int position) {
         showMessage("Add contact");
     }
 
     @Override
-    public void onPencilClick() {
+    public void onHeaderPencilClick() {
         showMessage("Pencil clicked");
     }
 
     @Override
-    public void onLockClick() {
+    public void onHeaderLockClick() {
         showMessage("Something locked");
     }
 
@@ -130,7 +149,6 @@ public class ListsFragment extends Fragment implements OnCardListItemClickListen
             if (textLength <= itemList.get(i).getTitle().length()) {
                 if (itemList.get(i).getTitle().toLowerCase().contains(s.toLowerCase())) {
                     tempSearchCollection.add(itemList.get(i));
-
                 }
             }
 
